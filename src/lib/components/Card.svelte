@@ -43,54 +43,52 @@
 </script>
 
 <div
-	class="group h-full overflow-hidden rounded-3xl border border-white/90 bg-white/68 shadow-[inset_0_1px_0_rgba(255,255,255,0.9),0_14px_30px_-26px_rgba(148,163,184,0.55)] backdrop-blur-xl transition duration-300 hover:bg-white/82"
+	class="group relative aspect-square overflow-hidden rounded-3xl border border-white/90 shadow-[inset_0_1px_0_rgba(255,255,255,0.9),0_14px_30px_-26px_rgba(148,163,184,0.55)]"
 >
-	<div class="relative h-32 overflow-hidden sm:h-36">
-		<div
-			class="h-full w-full bg-cover bg-center transition duration-500 group-hover:scale-[1.04]"
-			style={`background-image: url('${resolvedImage}'); background-position: ${imageFocusX ?? 50}% ${imageFocusY ?? 50}%`}
-			role="img"
-			aria-label={title}
-		></div>
-		<div class="absolute inset-0 bg-gradient-to-t from-white/55 via-white/18 to-white/8"></div>
-	</div>
-	<div class="space-y-3 px-5 pb-5 pt-4">
-		<div class="space-y-1">
-			<div class="flex items-start justify-between gap-4">
-				<h2 class="min-w-0 text-xl font-semibold text-slate-900">{title}</h2>
-				<div
-					class="inline-flex min-w-12 shrink-0 items-baseline justify-center whitespace-nowrap rounded-full border border-white/80 bg-white/70 px-2.5 py-1 text-slate-700"
+	<div
+		class="absolute inset-0 bg-cover transition duration-500 group-hover:scale-[1.03]"
+		style={`background-image: url('${resolvedImage}'); background-position: ${imageFocusX ?? 50}% ${imageFocusY ?? 50}%`}
+		role="img"
+		aria-label={title}
+	></div>
+
+	<div
+		class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent"
+	></div>
+
+	<div class="absolute inset-x-0 bottom-0 space-y-1.5 px-5 pb-4 pt-10">
+		<div class="flex items-start justify-between gap-4">
+			<h2 class="min-w-0 text-xl font-semibold text-white drop-shadow-sm">{title}</h2>
+			<div
+				class="inline-flex min-w-12 shrink-0 items-baseline justify-center whitespace-nowrap rounded-full border border-white/30 bg-white/15 px-2.5 py-1 text-white backdrop-blur-sm"
+			>
+				<span class="text-lg font-semibold leading-none">{rating}</span>
+				<span class="ml-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-white/70"
+					>/3</span
 				>
-					<span class="text-lg font-semibold leading-none">{rating}</span>
-					<span class="ml-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-500"
-						>/3</span
-					>
-				</div>
 			</div>
-			<p class="text-[11px] uppercase tracking-[0.24em] text-slate-500">{location}</p>
-			{#if author}
-				<p class="text-xs text-slate-600">av {formatAuthors(author, coAuthors)}</p>
-			{/if}
-			{#if beerPriceDisplay}
-				<div
-					class="mt-3 rounded-2xl border border-white/85 bg-white/76 px-3 py-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.85)]"
-				>
-					<div class="flex items-baseline justify-between gap-3">
-						<p class="text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-500">
-							Pris för en stor stark
-						</p>
-						<p class="whitespace-nowrap text-base font-semibold leading-tight text-slate-900">
-							{beerPriceDisplay.text}
-						</p>
-					</div>
-					{#if beerPriceDisplay.note}
-						<p class="mt-1 text-[10px] leading-tight text-slate-500">{beerPriceDisplay.note}</p>
-					{/if}
-				</div>
-			{/if}
 		</div>
-		<p class="text-sm leading-relaxed text-slate-700">
+		<p class="text-[11px] uppercase tracking-[0.24em] text-white/75">{location}</p>
+		{#if author}
+			<p class="text-xs text-white/75">av {formatAuthors(author, coAuthors)}</p>
+		{/if}
+		<p class="line-clamp-2 text-sm leading-relaxed text-white/90">
 			{description}
 		</p>
+		{#if beerPriceDisplay}
+			<div class="flex items-baseline justify-between gap-3 border-t border-white/25 pt-2">
+				<p class="text-[10px] font-semibold uppercase tracking-[0.16em] text-white/75">
+					Pris för en stor stark
+				</p>
+				<p class="whitespace-nowrap text-base font-semibold leading-tight text-white">
+					{beerPriceDisplay.text}
+				</p>
+			</div>
+			{#if beerPriceDisplay.note}
+				<p class="-mt-1 text-right text-[10px] leading-tight text-white/70">
+					{beerPriceDisplay.note}
+				</p>
+			{/if}
+		{/if}
 	</div>
 </div>
